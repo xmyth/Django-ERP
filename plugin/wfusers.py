@@ -37,8 +37,8 @@ class UpPosition(NextUserHandler):
             for e in emp:
                 if e.position and e.position.parent:
                     parent.append(e.position.parent)
-            # print emp
-            # print parent
+            # print(emp)
+            # print(parent)
             query2 = Employee.objects.filter(position__in=parent).exclude(user=None)
             return [x.user for x in query2.all()]
         else:

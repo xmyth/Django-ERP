@@ -93,7 +93,7 @@ class SaleItem(models.Model):
         super(SaleItem,self).save(force_insert,force_update,using,update_fields)
         sql = 'update sale_saleorder set amount = (select sum(sale_price*cnt) from sale_saleitem where master_id=%s) where id=%s'
         params = [self.master.id,self.master.id]
-        # print sql % (self.master.id,self.master.id)
+        # print(sql % (self.master.id,self.master.id))
         generic.update(sql,params)
 
     class Meta:
@@ -168,7 +168,7 @@ class OfferSheet(generic.BO):
             sql = 'UPDATE sale_offeritem a SET a.discount_price = a.sale_price - ' \
                   '((SELECT discount_amount/amount FROM sale_offersheet WHERE id = %s) * (a.sale_price*a.cnt)/a.cnt) WHERE a.master_id = %s'
             params = [self.id,self.id]
-            # print sql % (self.id,self.id)
+            # print(sql % (self.id,self.id))
             generic.update(sql,params)
 
         item_count = OfferItem.objects.filter(master=self).count()
@@ -244,7 +244,7 @@ class OfferItem(models.Model):
         super(OfferItem,self).save(force_insert,force_update,using,update_fields)
         sql = 'update sale_offersheet set amount = (select sum(sale_price*cnt) from sale_offeritem where master_id=%s) where id=%s'
         params = [self.master.id,self.master.id]
-        # print sql % (self.master.id,self.master.id)
+        # print(sql % (self.master.id,self.master.id))
         generic.update(sql,params)
 
     class Meta:

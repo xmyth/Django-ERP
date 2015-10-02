@@ -29,7 +29,7 @@ def compile_node_handler(request,obj,next_node):
     next_user_handler = next_node.next_user_handler
     # next_user_handler 具有最高优先级
     if next_user_handler:
-        # print 'it is here'
+        # print('it is here')
         klass = NextUserManager().handlers.get(next_user_handler)
         if klass and isinstance(klass,NextUserHandler):
             return klass.handle(request,obj,next_node)

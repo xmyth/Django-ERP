@@ -157,7 +157,7 @@ class History(models.Model):
 
     def get_action_desc(self):
         action_mapping = {0:u'提交',1:u'同意',3:u'拒绝',4:u'终止',}
-        # print action_mapping
+        # print(action_mapping)
         if self.pro_type:
             return action_mapping[self.pro_type]
         else:

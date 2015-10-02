@@ -613,12 +613,12 @@ class DataImport(generic.BO):
                                 if type(v) == str:
                                     v = force_text(v.decode('gbk'))
                                 params[name]=v
-                                # print 'name is %s value is %s'%(name,v)
+                                # print('name is %s value is %s'%(name,v))
                             try:
                                 params.pop('')
                             except Exception as e:
                                 pass
-                            # print params
+                            # print(params)
                             klass.objects.create(**params)
                     self.status = '1'
                     self.save()

@@ -92,7 +92,7 @@ class RequestUser(object):
                 context.update(dict(todolist = todolist))
             except Exception as e:
                 pass
-            # print context
+            # print(context)
             view_kwargs['extra_context'] = context
 
         if view_func.__name__ == 'app_index':

@@ -32,7 +32,7 @@ def update(sql, params=None):
                 cursor.execute(sql,params)
             else:
                 cursor.execute(sql)
-        except Exception,e:
+        except Exception as e:
             print e
 
 def get_app_model_info_from_request(request):
@@ -148,8 +148,8 @@ class BOAdmin(admin.ModelAdmin):
                     can_restart = True
                     show_workflow_line = True
 
-            except Exception,e:
-                print Exception,e
+            except Exception as e:
+                print e
 
         if workflow_modal and not workflow_instance:
             show_submit_button = True
@@ -209,8 +209,8 @@ class BOAdmin(admin.ModelAdmin):
                 )
                 # print history_list
                 extra_context.update(ctx)
-            except Exception,e:
-                print Exception,e
+            except Exception as e:
+                print e
                 pass
         return super(BOAdmin,self).history_view(request,object_id,extra_context)
 
@@ -228,7 +228,7 @@ class BOAdmin(admin.ModelAdmin):
             setattr(obj,'end',datetime.date(9999,12,31))
             try:
                 setattr(obj,'user',request.user)
-            except Exception,e:
+            except Exception as e:
                 pass
 
         super(BOAdmin,self).save_model(request,obj,form,change)
@@ -243,7 +243,7 @@ class BOAdmin(admin.ModelAdmin):
                 sql = 'update %s set code = \'%s\' where id=%s' % (table,code,obj.id)
                 print sql
                 update(sql)
-        except Exception,e:
+        except Exception as e:
             print e
 
     # def response_change(self, request, obj):
@@ -263,7 +263,7 @@ class BOAdmin(admin.ModelAdmin):
             try:
                 f = ops.get_field(field)
                 col_name = f.verbose_name
-            except Exception,e:
+            except Exception as e:
                 f = getattr(self.model,field)
                 if hasattr(f,'short_description'):
                     col_name = f.short_description
@@ -276,7 +276,7 @@ class BOAdmin(admin.ModelAdmin):
                 f = field
                 try:
                     f = ops.get_field(field)
-                except Exception,e:
+                except Exception as e:
                     pass
                 v = getattr(obj,field,'')
                 if hasattr(v,'__call__') or callable(v):

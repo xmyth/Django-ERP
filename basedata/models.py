@@ -74,10 +74,11 @@ def get_value_list(group):
     :param group:
     :return:
     """
-    if group:
-        return tuple([(item.code, item.name) for item in ValueListItem.objects.filter(group_code__exact=group,status=1)])
-    else:
-        return None
+    # if group:
+    #     return tuple([(item.code, item.name) for item in ValueListItem.objects.filter(group_code__exact=group,status=1)])
+    # else:
+    #     return None
+    return None
 
 
 class Address(generic.BO):
@@ -615,7 +616,7 @@ class DataImport(generic.BO):
                                 # print 'name is %s value is %s'%(name,v)
                             try:
                                 params.pop('')
-                            except Exception,e:
+                            except Exception as e:
                                 pass
                             # print params
                             klass.objects.create(**params)

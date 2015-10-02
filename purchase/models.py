@@ -43,7 +43,7 @@ class PurchaseOrder(generic.BO):
     entry_time = models.DateTimeField(_("entry time"),blank=True,null=True)
     attach = models.FileField(_('attach'),blank=True,null=True,help_text=u'您可导入采购明细，模板请参考文档FD0008')
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s' % (self.code,self.title)
 
     def save(self, force_insert=False, force_update=False, using=None,
@@ -175,7 +175,7 @@ class Invoice(generic.BO):
     vo_amount = models.DecimalField(_("invoice amount"),max_digits=14,decimal_places=4)
     file = models.FileField(_("invoice file"),upload_to='invoice',blank=True,null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s %s" % (self.code,self.partner)
 
     def save(self, force_insert=False, force_update=False, using=None,
@@ -213,7 +213,7 @@ class Payment(generic.BO):
             self.po_amount = self.po.amount
         super(Payment,self).save(force_insert,force_update,using,update_fields)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s %s" % (self.code,self.partner)
 
     class Meta:

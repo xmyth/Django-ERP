@@ -17,7 +17,7 @@ class Site(models.Model):
     description = models.TextField(_('site description'),blank=True,null=True)
     user = models.ManyToManyField(User,verbose_name=_('administrator'))
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s'%self.name
 
     class Meta:

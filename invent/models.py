@@ -31,7 +31,7 @@ class Inventory(generic.BO):
     batch = models.CharField(_("batch"),max_length=const.DB_CHAR_NAME_20,blank=True,null=True)
     price = models.DecimalField(_("price"),max_digits=14,decimal_places=4)
 
-    def __unicode__(self):
+    def __str__(self):
         des = self.material.spec or ''
         return u'%s %s %s' % (self.material.code,self.material.name,des)
 

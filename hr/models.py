@@ -39,7 +39,7 @@ class SalaryItem(models.Model):
     plus_or_minus = models.CharField(_("plus or minus"),max_length=const.DB_CHAR_CODE_2,choices=const.get_value_list('S049'),default='+')
     required = models.BooleanField(_("is required"),default=0)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s %s" % (self.code,self.name)
 
     class Meta:

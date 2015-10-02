@@ -46,7 +46,7 @@ class SaleOrder(generic.BO):
     user = models.ForeignKey(User,verbose_name=_("sales man"),blank=True,null=True)
     status = models.CharField(_("status"),max_length=const.DB_CHAR_CODE_2,default='0',choices=STATUS)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s' % (self.code,self.title)
 
     def save(self, force_insert=False, force_update=False, using=None,
@@ -116,7 +116,7 @@ class PaymentCollection(generic.BO):
     bank = models.ForeignKey(BankAccount,verbose_name=_("bank account"),blank=True,null=True)
     memo = models.TextField(_("memo"),blank=True,null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s'%(self.code,self.so)
 
     def save(self, force_insert=False, force_update=False, using=None,

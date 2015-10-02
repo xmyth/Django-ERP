@@ -82,7 +82,7 @@ class BO(models.Model):
     # mine = MineBOManager()
     objects = models.Manager()
 
-    def __unicode__(self):
+    def __str__(self):
         display = getattr(self,'name',None) or getattr(self,'title',None) or getattr(self,'description',None)
         if not display:
             display = ' '

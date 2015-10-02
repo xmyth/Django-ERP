@@ -25,7 +25,7 @@ class Modal(models.Model):
     begin = models.DateField(_("begin date"),blank=True,null=True,default=datetime.date.today)
     end = models.DateField(_("end date"),blank=True,null=True,default=datetime.date(9999,12,31))
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % self.name
 
     class Meta:
@@ -86,7 +86,7 @@ class Node(models.Model):
             self.code = fmt % (self.modal.node_set.count()+1)
         super(Node,self).save(force_insert,force_update,using,update_fields)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s-%s" % (self.code, self.name)
 
     class Meta:
@@ -116,7 +116,7 @@ class Instance(models.Model):
     status = models.IntegerField(_("status"),default=1,choices=STATUS)
     current_nodes = models.ManyToManyField(Node,verbose_name=_("current node"),blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.code
 
     def save(self, force_insert=False, force_update=False, using=None,

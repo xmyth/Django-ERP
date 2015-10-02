@@ -107,7 +107,7 @@ class Position(generic.BO):
     document = models.FileField(_("reference"),blank=True,null=True)
     weight = models.IntegerField(_("weight"),default=99)
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s %s' % (self.code,self.name)
 
     class Meta:

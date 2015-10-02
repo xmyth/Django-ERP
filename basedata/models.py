@@ -74,10 +74,7 @@ def get_value_list(group):
     :param group:
     :return:
     """
-    if group:
-        return tuple([(item.code, item.name) for item in ValueListItem.objects.filter(group_code__exact=group,status=1)])
-    else:
-        return None
+    return const.get_value_list(group)
 
 
 class Address(generic.BO):
